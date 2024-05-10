@@ -567,7 +567,7 @@ VOID Translator::AddSection(PBYTE base, PIMAGE_SECTION_HEADER section) {
         this->AddTranslation(new RegionTranslation(
             Region(section->VirtualAddress, section->Misc.VirtualSize), mapped,
             base + section->PointerToRawData,
-            std::min(section->Misc.VirtualSize, section->SizeOfRawData)));
+            (std::min)(section->Misc.VirtualSize, section->SizeOfRawData)));
     }
 }
 
@@ -875,17 +875,17 @@ BOOLEAN Translator::AddSwitchTranslation(Region &rva, PBYTE jumpBuffer,
             switch (indirectJumpTable.EntrySize) {
                 case 1:
                     jumpTable.Cases =
-                        std::max(static_cast<UINT_PTR>(*reinterpret_cast<PBYTE>(entry)),
+                        (std::max)(static_cast<UINT_PTR>(*reinterpret_cast<PBYTE>(entry)),
                             jumpTable.Cases);
                     break;
                 case 2:
                     jumpTable.Cases =
-                        std::max(static_cast<UINT_PTR>(*reinterpret_cast<PUSHORT>(entry)),
+                        (std::max)(static_cast<UINT_PTR>(*reinterpret_cast<PUSHORT>(entry)),
                             jumpTable.Cases);
                     break;
                 case 4:
                     jumpTable.Cases =
-                        std::max(static_cast<UINT_PTR>(*reinterpret_cast<PUINT>(entry)),
+                        (std::max)(static_cast<UINT_PTR>(*reinterpret_cast<PUINT>(entry)),
                             jumpTable.Cases);
                     break;
                 default:

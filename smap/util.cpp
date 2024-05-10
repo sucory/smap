@@ -141,7 +141,7 @@ BOOLEAN Util::IsSameRegister(ZydisRegister a, ZydisRegister b) {
     if (a <= ZYDIS_REGISTER_R15 && a >= ZYDIS_REGISTER_AX) {
         for (auto i =
             ((a - ZYDIS_REGISTER_AX) % GP_REGISTER_COUNT) + ZYDIS_REGISTER_AX;
-            i <= std::max(a, b); i += GP_REGISTER_COUNT) {
+            i <= (std::max)(a, b); i += GP_REGISTER_COUNT) {
             if (b == i) {
                 return TRUE;
             }
